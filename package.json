@@ -7,11 +7,17 @@
   "scripts": {
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "dev": "webpack serve --config config.dev.js"
+    "dev": "webpack serve --config ./config/webpack/config.dev.js",
+    "build": "webpack --config ./config/webpack/config.prod.js"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "css-loader": "^7.1.2",
+    "postcss-loader": "^8.1.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
@@ -24,6 +30,7 @@
     "globals": "^15.4.0",
     "html-webpack-plugin": "^5.6.0",
     "prettier": "^3.3.2",
+    "tailwindcss": "^3.4.4",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.13.0",
