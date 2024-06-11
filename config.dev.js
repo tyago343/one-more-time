@@ -1,12 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
   },
   devServer: {
     port: 3000,
@@ -30,4 +30,4 @@ module.exports = {
       template: './public/index.html',
     }),
   ],
-}
+};
