@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import Form from './product.tsx';
+import Form from './product';
 
 test('renders form with all fields and submit button', () => {
   render(<Form />);
