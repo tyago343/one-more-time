@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Form from './product';
-
+import '@testing-library/jest-dom';
 test('renders form with all fields and submit button', () => {
   render(<Form />);
   expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
@@ -13,7 +14,9 @@ test('renders form with all fields and submit button', () => {
 
 test('displays validation errors when fields are empty', async () => {
   render(<Form />);
-  fireEvent.submit(screen.getByRole('button', { name: /send/i }));
+  const user = userEvent.setup();
+
+  user.click(screen.getByRole('button', { name: /send/i }));
   await waitFor(() => {
     expect(screen.getByText(/name is required/i)).toBeInTheDocument();
     expect(screen.getByText(/description is required/i)).toBeInTheDocument();
@@ -26,48 +29,33 @@ test('displays validation errors when fields are empty', async () => {
 
 test('disables submit button and shows loader while submitting', async () => {
   render(<Form />);
-  fireEvent.input(screen.getByLabelText(/name/i), {
-    target: { value: 'Product' },
-  });
-  fireEvent.input(screen.getByLabelText(/description/i), {
-    target: { value: 'A great product' },
-  });
-  fireEvent.input(screen.getByLabelText(/price/i), {
-    target: { value: '100' },
-  });
-  const file = new File(['image'], 'image.png', { type: 'image/png' });
-  fireEvent.change(screen.getByLabelText(/images/i), {
-    target: { files: [file] },
-  });
-  fireEvent.submit(screen.getByRole('button', { name: /send/i }));
+  const user = userEvent.setup();
 
+  user.type(screen.getByLabelText(/name/i), 'Product');
+  user.type(screen.getByLabelText(/description/i), 'A great product');
+  user.type(screen.getByLabelText(/price/i), '100');
+  const file = new File(['image'], 'image.png', { type: 'image/png' });
+  user.upload(screen.getByLabelText(/images/i), [file]);
+  user.click(screen.getByRole('button', { name: /send/i }));
   await waitFor(() => {
     expect(screen.getByRole('button', { name: /sending.../i })).toBeDisabled();
   });
 });
 
 test('submits form data correctly', async () => {
-  render(<Form />);
-  fireEvent.input(screen.getByLabelText(/name/i), {
-    target: { value: 'Product' },
-  });
-  fireEvent.input(screen.getByLabelText(/description/i), {
-    target: { value: 'A great product' },
-  });
-  fireEvent.input(screen.getByLabelText(/price/i), {
-    target: { value: '100' },
-  });
+  const { debug } = render(<Form />);
+  const user = userEvent.setup();
+
+  user.type(screen.getByLabelText(/name/i), 'Product');
+  user.type(screen.getByLabelText(/description/i), 'A great product');
+  user.type(screen.getByLabelText(/price/i), '100');
   const file = new File(['image'], 'image.png', { type: 'image/png' });
-  fireEvent.change(screen.getByLabelText(/images/i), {
-    target: { files: [file] },
-  });
+  user.upload(screen.getByLabelText(/images/i), [file]);
 
-  fireEvent.submit(screen.getByRole('button', { name: /send/i }));
-
+  user.click(screen.getByRole('button', { name: /send/i }));
   await waitFor(() => {
     expect(screen.queryByText(/sending.../i)).not.toBeInTheDocument();
   });
-
   expect(screen.getByLabelText(/name/i)).toHaveValue('');
   expect(screen.getByLabelText(/description/i)).toHaveValue('');
   expect(screen.getByLabelText(/price/i)).toHaveValue(null);
