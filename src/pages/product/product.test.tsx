@@ -43,7 +43,7 @@ test('disables submit button and shows loader while submitting', async () => {
 });
 
 test('submits form data correctly', async () => {
-  const { debug } = render(<Form />);
+  render(<Form />);
   const user = userEvent.setup();
 
   user.type(screen.getByLabelText(/name/i), 'Product');

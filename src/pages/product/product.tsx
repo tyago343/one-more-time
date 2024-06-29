@@ -4,19 +4,18 @@ import { useForm } from 'react-hook-form';
 const Product: React.FC = () => {
   const {
     formState: { errors, isSubmitting, isSubmitSuccessful },
-
     handleSubmit,
     register,
     reset,
   } = useForm();
-  const onSubmit = (values: any) => {
-    console.log({ isSubmitting, values });
-    if (isSubmitSuccessful) reset();
+  const onSubmit = (_values: any) => {
+    setTimeout(() => {
+      if (isSubmitSuccessful) reset();
+    }, 5000);
   };
-
   return (
     <div className="shadow-primary-light my-4 mx-6">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="p-4">
         <div className="flex flex-col mb-4">
           <label htmlFor="name" className="mb-2">
             Name
@@ -76,14 +75,17 @@ const Product: React.FC = () => {
             <p className="text-error">{errors.images.message as string}</p>
           ) : null}
         </div>
-        <button
-          type="submit"
-          name={isSubmitting ? 'Sending...' : 'Send'}
-          role="button"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Sending...' : 'Send'}
-        </button>
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            name={isSubmitting ? 'Sending...' : 'Send'}
+            role="button"
+            disabled={isSubmitting}
+            className="border-green-500 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
+          >
+            {isSubmitting ? 'Sending...' : 'Send'}
+          </button>
+        </div>
       </form>
     </div>
   );
