@@ -20,6 +20,10 @@ module.exports = {
           DEFAULT: '#D32F2F',
           light: '#E57373',
         },
+        dark: {
+          DEFAULT: '#373330',
+          hover: '#524d49',
+        },
       },
       boxShadow: {
         primary: '0 4px 6px rgba(75, 73, 172, 0.5)',

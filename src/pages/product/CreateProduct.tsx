@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { TranslationNamespaces } from '../../i18n';
 
 const Product: React.FC = () => {
   const {
@@ -8,6 +10,7 @@ const Product: React.FC = () => {
     register,
     reset,
   } = useForm();
+  const { t } = useTranslation(TranslationNamespaces.COMMON);
   const onSubmit = (_values: any) => {
     setTimeout(() => {
       if (isSubmitSuccessful) reset();
@@ -18,7 +21,7 @@ const Product: React.FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="p-4">
         <div className="flex flex-col mb-4">
           <label htmlFor="name" className="mb-2">
-            Name
+            {t('name')}
           </label>
           <input
             className="bg-supporting-blue/40 rounded-lg px-2 py-1 mb-1"
@@ -32,7 +35,7 @@ const Product: React.FC = () => {
         </div>
         <div className="flex flex-col mb-4">
           <label htmlFor="description" className="mb-2">
-            Description
+            {t('description')}
           </label>
           <textarea
             {...register('description', {
@@ -47,7 +50,7 @@ const Product: React.FC = () => {
         </div>
         <div className="flex flex-col mb-4">
           <label htmlFor="price" className="mb-2">
-            Price
+            {t('price')}
           </label>
           <input
             type="number"
@@ -61,7 +64,7 @@ const Product: React.FC = () => {
         </div>
         <div className="flex flex-col mb-4">
           <label htmlFor="images" className="mb-2">
-            Images
+            {t('images')}
           </label>
           <input
             type="file"
