@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { TranslationNamespaces } from '../../i18n';
+import { TranslationNamespaces } from '@i18n/index';
 
-const Product: React.FC = () => {
+const ProductForm: React.FC = () => {
   const {
     formState: { errors, isSubmitting, isSubmitSuccessful },
     handleSubmit,
@@ -94,4 +94,4 @@ const Product: React.FC = () => {
   );
 };
 
-export default Product;
+export default ProductForm;

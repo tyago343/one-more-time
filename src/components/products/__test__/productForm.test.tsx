@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Form from './CreateProduct';
+import Form from '../productForm';
 import '@testing-library/jest-dom';
 test('renders form with all fields and submit button', () => {
   render(<Form />);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { TranslationNamespaces } from '../../i18n';
+import { TranslationNamespaces } from '../i18n';
 
 const Product: React.FC = () => {
   const { t } = useTranslation(TranslationNamespaces.CATALOG);
