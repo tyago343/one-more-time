@@ -112,7 +112,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
-      "@i18n/*": ["i18n/*"]
+      "@i18n/*": ["i18n/*"],
+      "@interfaces/*": ["interfaces/*"]
     }
   },
   "include": ["src/**/*"],

@@ -4,5 +4,7 @@
   "price": "Price",
   "send": "Send",
   "images": "Images",
-  "sending": "Sending..."
+  "thumbnail": "thumbnail",
+  "sending": "Sending...",
+  "actions": "Actions"
 }

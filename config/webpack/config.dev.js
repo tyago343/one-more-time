@@ -31,6 +31,7 @@ module.exports = {
       '@components': path.resolve(__dirname, '../../src/components/'),
       '@pages': path.resolve(__dirname, '../../src/pages/'),
       '@i18n': path.resolve(__dirname, '../../src/i18n/'),
+      '@interfaces': path.resolve(__dirname, '../../src/interfaces/'),
     },
   },
   plugins: [
