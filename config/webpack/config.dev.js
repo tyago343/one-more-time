@@ -13,6 +13,8 @@ module.exports = {
   devServer: {
     port: 3000,
     hot: true,
+    open: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -34,6 +36,7 @@ module.exports = {
       '@pages': path.resolve(__dirname, '../../src/pages/'),
       '@i18n': path.resolve(__dirname, '../../src/i18n/'),
       '@interfaces': path.resolve(__dirname, '../../src/interfaces/'),
+      '@shared': path.resolve(__dirname, '../../src/shared/'),
     },
   },
   plugins: [
