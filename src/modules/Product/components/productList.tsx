@@ -1,9 +1,9 @@
 import React from 'react';
-import { IProduct } from '@interfaces/Product';
 import { useTranslation } from 'react-i18next';
 import { TranslationNamespaces } from '@i18n/index';
+import { Product } from '../domain/entitites/Product';
 interface ProductListProps {
-  products: IProduct[];
+  products: Product[];
 }
 const productList: React.FC<ProductListProps> = ({ products }) => {
   const { t } = useTranslation(TranslationNamespaces.COMMON);
