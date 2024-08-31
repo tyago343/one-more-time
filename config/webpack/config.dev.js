@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index',
@@ -38,6 +40,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'BackOffice',
       template: './public/index.html',
+    }),
+    new NodePolyfillPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        REACT_APP_MSW: JSON.stringify('true'),
+      },
     }),
   ],
 };
