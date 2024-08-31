@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[fullhash].js',
+    publicPath: '/',
   },
   devServer: {
     port: 3000,
