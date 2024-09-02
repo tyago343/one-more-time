@@ -9,7 +9,7 @@ async function enableMocking() {
   if (process.env.NODE_ENV !== 'development' || !process.env.REACT_APP_MSW) {
     return;
   }
-  const { worker } = await import('./modules/Product/mocks/msw/browser');
+  const { worker } = await import('./modules/Product/infrastructure/mocks/msw/browser');
   return worker.start();
 }
 
