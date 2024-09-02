@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductForm from '../components/productForm';
+import ProductForm from '../components/Product.form';
 
 const CreateProductContainer: React.FC = () => {
   return <ProductForm />;

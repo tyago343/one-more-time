@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Products from '@pages/Product';
 import ListProductsContainer from './modules/Product/infrastructure/containers/ListProducts';
 import CreateProductContainer from './modules/Product/infrastructure/containers/CreateProduct';
+import ViewProductContainer from './modules/Product/infrastructure/containers/ViewProduct';
 export default () => {
   return (
     <main className="flex flex-col md:flex-row h-screen">
@@ -15,6 +16,7 @@ export default () => {
             <Route index element={<ListProductsContainer />} />
             <Route path="create" element={<CreateProductContainer />} />
           </Route>
+          <Route path="/products/:id" element={<ViewProductContainer />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </div>
