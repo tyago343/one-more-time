@@ -11,10 +11,13 @@ interface ProductListProps {
 const productList: React.FC<ProductListProps> = ({ products }) => {
   const { t } = useTranslation(TranslationNamespaces.COMMON);
   return (
-    <div>
-      <table>
+    <div className="w-full">
+      <table className="w-full">
         <thead role="heading">
           <tr className="bg-dark text-gray-200">
+            <th className="background-clip-padding-box text-white p-4 relative align-middle uppercase">
+              {t('id')}
+            </th>
             <th className="background-clip-padding-box text-white p-4 relative align-middle">
               {t('name')}
             </th>
@@ -33,6 +36,9 @@ const productList: React.FC<ProductListProps> = ({ products }) => {
           {products.map((product, index) => {
             return (
               <tr key={`${product.name}_${index}_${product.price}`}>
+                <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center">
+                  {product.id}
+                </td>
                 <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4">
                   <Link to={`/products/${product.id}`} className="underline">
                     {product.name}
@@ -42,9 +48,9 @@ const productList: React.FC<ProductListProps> = ({ products }) => {
                   {product.price}
                 </td>
                 <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4">
-                  {product.image}
+                  <img src={product.image} className="mx-auto h-16" />
                 </td>
-                <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4">
+                <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center">
                   <Link to={`/products/${product.id}`} className="underline">
                     {t('edit')}
                   </Link>

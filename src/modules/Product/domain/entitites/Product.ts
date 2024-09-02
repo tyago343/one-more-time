@@ -5,7 +5,3 @@ export interface Product {
   price: number;
   image: string;
 }
-export interface ProductRepository {
-  findAll(): Promise<Product[]>;
-  create(product: Product): Promise<void>;
-}

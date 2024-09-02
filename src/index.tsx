@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import './styles/tailwind.css';
 import './i18next';
 import App from './main';
+import { Provider } from 'react-redux';
+import { store } from '@shared/infrastructure/store';
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== 'development' || !process.env.REACT_APP_MSW) {
@@ -18,9 +20,11 @@ const root = createRoot(container!);
 enableMocking().then(() =>
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
     </React.StrictMode>
   )
 );

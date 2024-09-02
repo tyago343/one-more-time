@@ -6,21 +6,21 @@ const products: Product[] = [
     name: 'Product 1',
     price: 100,
     description: 'This is a description for Product 1',
-    image: 'https://via.placeholder.com/150',
+    image: 'https://picsum.photos/200/300',
   },
   {
     id: '2',
     name: 'Product 2',
     price: 200,
     description: 'This is a description for Product 2',
-    image: 'https://via.placeholder.com/150',
+    image: 'https://prd.place/400',
   },
   {
     id: '3',
     name: 'Product 3',
     price: 300,
     description: 'This is a description for Product 3',
-    image: 'https://via.placeholder.com/150',
+    image: 'https://prd.place/400',
   },
 ];
 const product: Product = {
@@ -28,7 +28,7 @@ const product: Product = {
   name: 'Product 4',
   price: 400,
   description: 'This is a description for Product 4',
-  image: 'https://via.placeholder.com/150',
+  image: 'https://prd.place/400',
 };
 
 const productBuilder = (data: Partial<Product>): Product => ({
@@ -36,7 +36,7 @@ const productBuilder = (data: Partial<Product>): Product => ({
   name: 'Product Test',
   price: 1200,
   description: 'This is a description for Product Test',
-  image: 'https://via.placeholder.com/150',
+  image: 'https://prd.place/400',
   ...data,
 });
 export { products, product, productBuilder };

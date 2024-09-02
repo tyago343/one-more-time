@@ -17,6 +17,7 @@ module.exports = {
     open: true,
     historyApiFallback: true,
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -38,12 +39,14 @@ module.exports = {
       '@i18n': path.resolve(__dirname, '../../src/i18n/'),
       '@interfaces': path.resolve(__dirname, '../../src/interfaces/'),
       '@shared': path.resolve(__dirname, '../../src/shared/'),
+      '@/': path.resolve(__dirname, '../../src/modules'),
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'BackOffice',
       template: './public/index.html',
+      favicon: './public/favicon.ico',
     }),
     new NodePolyfillPlugin(),
     new webpack.DefinePlugin({

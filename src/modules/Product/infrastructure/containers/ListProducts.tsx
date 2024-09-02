@@ -1,8 +1,8 @@
 import React from 'react';
 import ProductList from '../components/productList';
-import { products as mockedProducts } from '../mocks/Product.mock';
+import { useGetProductsQuery } from '../store/productApi';
 function ListProductsContainer() {
-  const products = mockedProducts;
+  const { data: products = [] } = useGetProductsQuery();
   return <ProductList products={products} />;
 }
 export default ListProductsContainer;
