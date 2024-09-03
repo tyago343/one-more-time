@@ -1,8 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const webpack = require('webpack');
 module.exports = {
   entry: './src/index',
+  watch: false,
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
@@ -13,14 +17,16 @@ module.exports = {
     runtimeChunk: 'single',
     minimize: true,
     minimizer: [new TerserPlugin()],
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   cache: {
     type: 'filesystem',
     buildDependencies: {
-      config: [__filename], // Incluye el archivo de configuración como dependencia
+      config: [__filename],
     },
   },
-
   module: {
     rules: [
       {
@@ -36,11 +42,23 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@components': path.resolve(__dirname, '../../src/components/'),
+      '@pages': path.resolve(__dirname, '../../src/pages/'),
+      '@i18n': path.resolve(__dirname, '../../src/i18n/'),
+      '@interfaces': path.resolve(__dirname, '../../src/interfaces/'),
+      '@shared': path.resolve(__dirname, '../../src/shared/'),
+      '@/': path.resolve(__dirname, '../../src/modules'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'BackOffice',
       template: './public/index.html',
+    }),
+    new BundleAnalyzerPlugin(),
+    new CompressionWebpackPlugin({
+      algorithm: 'gzip',
     }),
   ],
 };
