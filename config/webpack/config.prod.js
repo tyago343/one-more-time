@@ -4,9 +4,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
+
 module.exports = {
   entry: './src/index',
-  watch: false,
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
@@ -19,6 +19,13 @@ module.exports = {
     minimizer: [new TerserPlugin()],
     splitChunks: {
       chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
     },
   },
   cache: {
@@ -32,7 +39,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules|\.test\.tsx?$|\.spec\.tsx?$/,
       },
       {
         test: /\.css$/,
@@ -63,6 +70,11 @@ module.exports = {
     new BundleAnalyzerPlugin(),
     new CompressionWebpackPlugin({
       algorithm: 'gzip',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        REACT_APP_MSW: JSON.stringify('false'),
+      },
     }),
   ],
 };

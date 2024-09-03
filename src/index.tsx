@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { store } from '@shared/infrastructure/store';
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development' || !process.env.REACT_APP_MSW) {
+  if (process.env.NODE_ENV !== 'development' || process.env.REACT_APP_MSW !== 'true') {
     return;
   }
   const { worker } = await import('./modules/Product/infrastructure/mocks/msw/browser');

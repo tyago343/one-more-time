@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import Spinner from './Spinner';
 
 interface OverlayProps {
   content?: ReactNode;
@@ -10,7 +11,7 @@ const Overlay: React.FC<OverlayProps> = ({ content }) => {
       aria-label="Loading..."
       className="overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
     >
-      {content && <div aria-label="Loading...">{content}</div>}
+      {<div aria-label="Loading...">{content ?? <Spinner />}</div>}
     </div>
   );
 };

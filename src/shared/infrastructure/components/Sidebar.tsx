@@ -18,7 +18,7 @@ const Sidebar: React.FC = () => {
           id="menu"
           className="
             group-hover:table hover:block
-            hidden absolute left-full top-0
+            hidden absolute left-full top-0 z-10
             m-0 p-4 px-8
             w-full max-w-[calc(100vw - 8.8rem)] min-h-[720px] h-screen
           bg-dark-hover text-gray-200 text-left"
@@ -27,7 +27,10 @@ const Sidebar: React.FC = () => {
             <strong>{t('catalog')}</strong>
           </h3>
           <li className="py-2 list-none min-w-80">
-            <Link to="/products">{t('product')}</Link>
+            <Link to="/products">{t('products')}</Link>
+          </li>
+          <li className="py-2 list-none min-w-80">
+            <Link to="/categories">{t('categories')}</Link>
           </li>
         </div>
       </div>
