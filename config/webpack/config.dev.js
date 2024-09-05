@@ -17,7 +17,7 @@ module.exports = {
     open: true,
     historyApiFallback: true,
   },
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {

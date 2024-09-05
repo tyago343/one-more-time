@@ -13,12 +13,11 @@ const CreateProductContainer = React.lazy(
 const ViewProductContainer = React.lazy(
   () => import('./modules/Product/infrastructure/containers/ViewProduct')
 );
-
 export default () => {
   return (
     <main className="flex flex-col md:flex-row h-screen">
       <Sidebar />
-      <div className="w-full  bg-white">
+      <div className="w-full bg-white">
         <React.Suspense fallback={<Overlay />}>
           <Routes>
             <Route path="/" element={<h1>Home</h1>} />

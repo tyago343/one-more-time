@@ -14,4 +14,9 @@ export enum TranslationNamespaces {
   COMMON = 'common',
   CATALOG = 'catalog',
 }
+export function concatCommonKeysTranslations(
+  translationsNamespaces: TranslationNamespaces[]
+): TranslationNamespaces[] {
+  return Array(...translationsNamespaces, TranslationNamespaces.COMMON);
+}
 export default translations;

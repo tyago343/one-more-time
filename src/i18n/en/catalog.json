@@ -3,5 +3,6 @@
   "catalogs": "Catalogs",
   "product": "Product",
   "products": "Products",
-  "categories": "Categories"
+  "categories": "Categories",
+  "createProduct": "Create Product"
 }
