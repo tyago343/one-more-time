@@ -4,3 +4,6 @@
 body {
   @apply font-roboto;
 }
+label {
+  @apply font-sans;
+}
