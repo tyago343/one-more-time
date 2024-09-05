@@ -1,7 +1,16 @@
 {
+  "home": "Inicio",
+  "back": "Atrás",
   "name": "Nombre",
   "description": "Descripción",
   "price": "Precio",
   "send": "Enviar",
-  "sending": "Enviando..."
+  "images": "Imágenes",
+  "thumbnail": "Miniatura",
+  "sending": "Enviando...",
+  "actions": "Acciones",
+  "404-title": "404 - Página no encontrada",
+  "404-message": "La página que estás buscando no existe.",
+  "404-back": "Volver a inicio",
+  "save": "Guardar"
 }

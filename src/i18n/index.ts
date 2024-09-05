@@ -1,6 +1,7 @@
 import enCommon from './en/common.json';
 import enCatalog from './en/catalog.json';
 import esCommon from './es/common.json';
+import esCatalog from './es/catalog.json';
 const translations = {
   en: {
     common: enCommon,
@@ -8,6 +9,7 @@ const translations = {
   },
   es: {
     common: esCommon,
+    catalog: esCatalog,
   },
 };
 export enum TranslationNamespaces {

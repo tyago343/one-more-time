@@ -4,5 +4,9 @@
   "product": "Product",
   "products": "Products",
   "categories": "Categories",
-  "createProduct": "Create Product"
+  "createProduct": "Create Product",
+  "price": "Price",
+  "description": "Description",
+  "images": "Images",
+  "name": "Name"
 }

@@ -2,21 +2,20 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { concatCommonKeysTranslations, TranslationNamespaces } from '@i18n/index';
+import { CreateProductData } from '../containers/CreateProduct';
 const translations = concatCommonKeysTranslations([TranslationNamespaces.CATALOG]);
+interface ProductFormProps {
+  onSubmit: (values: CreateProductData) => void;
+}
 
-const ProductForm: React.FC = () => {
+const ProductForm: React.FC<ProductFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation(translations);
   const {
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
     handleSubmit,
     register,
-    reset,
-  } = useForm();
-  const onSubmit = (_values: any) => {
-    setTimeout(() => {
-      if (isSubmitSuccessful) reset();
-    }, 5000);
-  };
+  } = useForm<CreateProductData>();
+
   return (
     <>
       <h1 className="py-4 text-3xl font-extralight">{t('products')}</h1>
@@ -26,7 +25,7 @@ const ProductForm: React.FC = () => {
             onClick={handleSubmit(onSubmit)}
             className="bg-orange-600 border-orange-600 text-white text-shadow px-4 py-3 hover:bg-orange-700 hover:border-orange-700 font-semibold"
           >
-            {t('save', { ns: TranslationNamespaces.COMMON })}{' '}
+            {t('save', { ns: TranslationNamespaces.COMMON })}
           </button>
         </div>
       </div>
