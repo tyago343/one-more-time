@@ -5,13 +5,13 @@ import Products from '@pages/Product';
 import Overlay from '@shared/infrastructure/components/Overlay';
 import NotFound from '@shared/infrastructure/components/not-found';
 const ListProductsContainer = React.lazy(
-  () => import('./modules/Product/infrastructure/containers/ListProducts')
+  () => import('./modules/Product/presenter/containers/ListProducts')
 );
 const CreateProductContainer = React.lazy(
-  () => import('./modules/Product/infrastructure/containers/CreateProduct')
+  () => import('./modules/Product/presenter/containers/CreateProduct')
 );
 const ViewProductContainer = React.lazy(
-  () => import('./modules/Product/infrastructure/containers/ViewProduct')
+  () => import('./modules/Product/presenter/containers/ViewProduct')
 );
 export default () => {
   return (

@@ -2,13 +2,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { concatCommonKeysTranslations, TranslationNamespaces } from '@i18n/index';
-import { CreateProductData } from '../containers/CreateProduct';
+import { CreateProductData, Product } from '@/Product/domain/entitites/Product';
 const translations = concatCommonKeysTranslations([TranslationNamespaces.CATALOG]);
 interface ProductFormProps {
   onSubmit: (values: CreateProductData) => void;
+  product?: Product;
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ onSubmit }) => {
+const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, product }) => {
   const { t } = useTranslation(translations);
   const {
     formState: { errors },
@@ -42,7 +43,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onSubmit }) => {
               <input
                 type="text"
                 id="name"
-                {...register('name', { required: 'Name is required' })}
+                {...register('name', { required: 'Name is required', value: product?.name })}
                 className="-webkit-appearance-none bg-white border border-gray-300 box-shadow-none text-gray-700 text-base font-normal py-2 px-4 transition duration-150 ease-in-out w-1/2 float-left ml-4 focus:border-blue-500 focus:outline-none"
               />
               {errors.name ? <p>{errors.name.message as string}</p> : null}
@@ -58,6 +59,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onSubmit }) => {
               <textarea
                 {...register('description', {
                   required: 'Description is required',
+                  value: product?.description,
                 })}
                 id="description"
                 className="-webkit-appearance-none bg-white border border-gray-300 box-shadow-none text-gray-700 text-base capitalize font-normal py-2 px-4 transition duration-150 ease-in-out w-1/2 float-left ml-4 focus:border-blue-500 focus:outline-none"
@@ -73,8 +75,8 @@ const ProductForm: React.FC<ProductFormProps> = ({ onSubmit }) => {
             </div>
             <div className='after:content-[""] after:table after:clear-both'>
               <input
-                type="number"
-                {...register('price', { required: 'Price is required' })}
+                type="text"
+                {...register('price', { required: 'Price is required', value: product?.price })}
                 id="price"
                 className="-webkit-appearance-none bg-white border border-gray-300 box-shadow-none text-gray-700 text-base capitalize font-normal py-2 px-4 transition duration-150 ease-in-out w-1/2 float-left ml-4 focus:border-blue-500 focus:outline-none"
               />

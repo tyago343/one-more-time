@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetProductByIdQuery } from '../store/productApi';
-import ProductView from '../components/Product.view';
+import { useGetProductByIdQuery } from '../../infrastructure/store/productApi';
 import Overlay from '@shared/infrastructure/components/Overlay';
 import Spinner from '@shared/infrastructure/components/Spinner';
+import ProductForm from '../components/Product.form';
 
 const ViewProductContainer = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,7 +15,7 @@ const ViewProductContainer = () => {
   if (!product) {
     return <div>Product not found</div>;
   }
-  return <ProductView product={product} />;
+  return <ProductForm product={product} onSubmit={() => console.log} />;
 };
 
 export default ViewProductContainer;
