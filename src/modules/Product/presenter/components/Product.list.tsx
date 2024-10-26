@@ -27,9 +27,9 @@ const productList: React.FC<ProductListProps> = ({ products }) => {
       </div>
       <div className="py-4"></div>
       <div className="w-full">
-        <table className="w-full">
+        <table className="w-full text-sm">
           <thead role="heading">
-            <tr className="bg-dark text-gray-200">
+            <tr className="bg-dark text-gray-200 ">
               <th className="background-clip-padding-box text-white p-4 relative align-middle uppercase">
                 {t('id')}
               </th>
@@ -47,25 +47,26 @@ const productList: React.FC<ProductListProps> = ({ products }) => {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {products.map((product) => {
+          <tbody className="border border-t-0 border-gray-300">
+            {products.map((product, index) => {
+              const rowClass = index % 2 === 0 ? 'bg-white' : 'bg-custom-even';
               return (
-                <tr key={`${product.id}`}>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center w-[15%]">
+                <tr key={`${product.id}`} className={`${rowClass} hover:bg-custom-hover`}>
+                  <td className=" border-dashed border-gray-300 text-gray-700 p-2 text-center w-[15%]">
                     {product.id}
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 w-[30%]">
+                  <td className="border-l-2 border-dashed border-gray-300 text-gray-700 p-2 w-[30%]">
                     <Link to={`/products/${product.id}`} className="underline">
                       {product.name}
                     </Link>
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 w-[20%]">
+                  <td className="border-l-2 border-dashed border-gray-300 text-gray-700 p-2 w-[20%]">
                     {product.price}
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 w-[20%]">
+                  <td className="border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-2 w-[20%]">
                     <img src={product?.images?.[0]} className="mx-auto h-16" />
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center w-[15%]">
+                  <td className=" border-dashed border-gray-300 text-gray-700 p-2 text-center w-[15%]">
                     <Link to={`/products/${product.id}`} className="underline">
                       {t('edit')}
                     </Link>

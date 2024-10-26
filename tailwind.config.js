@@ -24,6 +24,10 @@ module.exports = {
           DEFAULT: '#373330',
           hover: '#524d49',
         },
+        custom: {
+          even: '#f5f5f5',
+          hover: '#e5f7fe',
+        },
       },
       boxShadow: {
         primary: '0 4px 6px rgba(75, 73, 172, 0.5)',
