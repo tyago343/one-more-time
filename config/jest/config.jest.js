@@ -11,6 +11,6 @@ module.exports = {
     '<rootDir>/src/**/__tests__/**/*.ts?(x)',
     '<rootDir>/src/**/?(*.)+(spec|test).ts?(x)',
   ],
-  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/public/', '/config/'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/public/', '/config/', '/e2e/'],
   rootDir: '../../',
 };
