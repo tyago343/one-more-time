@@ -62,7 +62,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, product }) => {
                   value: product?.description,
                 })}
                 id="description"
-                className="-webkit-appearance-none bg-white border border-gray-300 box-shadow-none text-gray-700 text-base capitalize font-normal py-2 px-4 transition duration-150 ease-in-out w-1/2 float-left ml-4 focus:border-blue-500 focus:outline-none"
+                className="-webkit-appearance-none bg-white border border-gray-300 box-shadow-none text-gray-700 text-base font-normal py-2 px-4 transition duration-150 ease-in-out w-1/2 float-left ml-4 focus:border-blue-500 focus:outline-none"
               />
               {errors.description ? <p>{errors.description.message as string}</p> : null}
             </div>
@@ -92,9 +92,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, product }) => {
             <div className='after:content-[""] after:table after:clear-both'>
               <input
                 type="file"
-                {...register('images', {
-                  required: 'At least one image is required',
-                })}
+                {...register('images')}
                 id="images"
                 className="-webkit-appearance-none bg-white border border-gray-300 box-shadow-none text-gray-700 text-base font-normal py-2 px-4 transition duration-150 ease-in-out w-1/2 float-left ml-4 focus:border-blue-500 focus:outline-none"
               />

@@ -1,6 +1,6 @@
 import React from 'react';
+import { useGetProductsQuery } from '@/Product/infrastructure/store/productApi';
 import ProductList from '../components/Product.list';
-import { useGetProductsQuery } from '../../infrastructure/store/productApi';
 function ListProductsContainer() {
   const { data: products = [] } = useGetProductsQuery();
   return <ProductList products={products} />;

@@ -3,11 +3,11 @@ export interface Product {
   name: string;
   description: string;
   price: string;
-  image: string;
+  images?: string[];
 }
 export interface CreateProductData {
   name: string;
   description: string;
   price: string;
-  images: FileList;
+  images?: FileList[];
 }

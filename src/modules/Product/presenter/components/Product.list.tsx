@@ -40,32 +40,32 @@ const productList: React.FC<ProductListProps> = ({ products }) => {
                 {t('price')}
               </th>
               <th className="background-clip-padding-box text-white p-4 relative align-middle">
-                {t('thumbnail')}
+                {t('thumbnail', { ns: TranslationNamespaces.COMMON })}
               </th>
               <th className="background-clip-padding-box text-white p-4 relative align-middle">
-                {t('actions')}
+                {t('actions', { ns: TranslationNamespaces.COMMON })}
               </th>
             </tr>
           </thead>
           <tbody>
-            {products.map((product, index) => {
+            {products.map((product) => {
               return (
-                <tr key={`${product.name}_${index}_${product.price}`}>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center">
+                <tr key={`${product.id}`}>
+                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center w-[15%]">
                     {product.id}
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4">
+                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 w-[30%]">
                     <Link to={`/products/${product.id}`} className="underline">
                       {product.name}
                     </Link>
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4">
+                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 w-[20%]">
                     {product.price}
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4">
-                    <img src={product.image} className="mx-auto h-16" />
+                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 w-[20%]">
+                    <img src={product?.images?.[0]} className="mx-auto h-16" />
                   </td>
-                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center">
+                  <td className="bg-white border-l-2 border-r-2 border-dashed border-gray-300 text-gray-700 p-4 text-center w-[15%]">
                     <Link to={`/products/${product.id}`} className="underline">
                       {t('edit')}
                     </Link>

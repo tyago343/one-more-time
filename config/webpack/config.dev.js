@@ -12,7 +12,7 @@ module.exports = {
     publicPath: '/',
   },
   devServer: {
-    port: 3000,
+    port: 8072,
     hot: true,
     open: true,
     historyApiFallback: true,
@@ -43,7 +43,7 @@ module.exports = {
       '@i18n': path.resolve(__dirname, '../../src/i18n/'),
       '@interfaces': path.resolve(__dirname, '../../src/interfaces/'),
       '@shared': path.resolve(__dirname, '../../src/shared/'),
-      '@/': path.resolve(__dirname, '../../src/modules'),
+      '@': path.resolve(__dirname, '../../src/modules/'),
     },
   },
   plugins: [
