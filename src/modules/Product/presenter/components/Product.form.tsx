@@ -5,11 +5,12 @@ import { concatCommonKeysTranslations, TranslationNamespaces } from '@i18n/index
 import { CreateProductData, Product } from '@/Product/domain/entitites/Product';
 const translations = concatCommonKeysTranslations([TranslationNamespaces.CATALOG]);
 interface ProductFormProps {
-  onSubmit: (values: CreateProductData) => void;
   product?: Product;
+  onSubmit: (values: CreateProductData) => void;
+  saveImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, product }) => {
+const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, saveImage, product }) => {
   const { t } = useTranslation(translations);
   const {
     formState: { errors },
@@ -94,6 +95,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onSubmit, product }) => {
                 type="file"
                 {...register('images')}
                 id="images"
+                onChange={saveImage}
                 className="-webkit-appearance-none bg-white border border-gray-300 box-shadow-none text-gray-700 text-base font-normal py-2 px-4 transition duration-150 ease-in-out w-1/2 float-left ml-4 focus:border-blue-500 focus:outline-none"
               />
               {errors.images ? <p>{errors.images.message as string}</p> : null}
